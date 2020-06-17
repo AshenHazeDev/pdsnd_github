@@ -21,8 +21,6 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
 
     # The section gathers user input for the city to be investigated and rejects all invalid entries.
-
-
     while True:
         try:
             city = input('Please enter a city (Chicago, New York City or Washington): ').lower()
@@ -34,7 +32,6 @@ def get_filters():
         else:
             print('\nPlease enter a valid entry. \n')
             continue
-
 
     # This section gets the month or all filter and rejects any invalid entries.
     while True:
@@ -66,10 +63,8 @@ def get_filters():
             print('\nPlease enter a valid entry. \n')
             continue
 
-
     print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """

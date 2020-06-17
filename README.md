@@ -16,4 +16,8 @@ for their Programming with Python for Data Science Nano Degree.
 * time
 
 ### Credits
-Special thanks to the Udacity team for the course they put together as well as the project reviewer for his hints on the hint on how to display five lines of code at a time using df.iloc().
+Thank you to the Udacity team for the course they put together as well as the project reviewer for his hints on the hint on how to display five lines of code at a time using df.iloc(). Some links for resources used for this project are listed below.
+
+* https://www.geeksforgeeks.org/python-pandas-extracting-rows-using-loc/?ref=rp
+* https://stackoverflow.com/questions/23294658/asking-the-user-for-input-until-they-give-a-valid-response
+* https://stackoverflow.com/questions/24870306/how-to-check-if-a-column-exists-in-pandas

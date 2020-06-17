@@ -19,12 +19,12 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # The section gathers user input for the city to be investigated and rejects all invalid entries.
 
 
     while True:
-        try: 
+        try:
             city = input('Please enter a city (Chicago, New York City or Washington): ').lower()
         except:
             print('\nPlease enter a valid entry. \n')
@@ -34,7 +34,7 @@ def get_filters():
         else:
             print('\nPlease enter a valid entry. \n')
             continue
-                      
+
 
     # This section gets the month or all filter and rejects any invalid entries.
     while True:
@@ -49,8 +49,8 @@ def get_filters():
             break
         else:
             print('\nPlease enter a valid entry. \n')
-            continue                 
-    
+            continue
+
     # This collects the day filter and rejects invalid input.
     while True:
         try:
@@ -64,7 +64,7 @@ def get_filters():
             break
         else:
             print('\nPlease enter a valid entry. \n')
-            continue        
+            continue
 
 
     print('-'*40)
@@ -92,7 +92,7 @@ def load_data(city, month, day):
 
     # extracts month, day and hour from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
-    df['day of week'] = df['Start Time'].dt.dayofweek      
+    df['day of week'] = df['Start Time'].dt.dayofweek
     df['hour'] = df['Start Time'].dt.hour
     # creates trip collumn for most common overall trip
     df['trip'] = df['Start Station'] + ' to ' + df['End Station']
@@ -100,7 +100,7 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month != 'all':
         # uses the index of the months list to get the corresponding int
-     
+
         month = months.index(month) + 1
         #print('The month is: {}'.format(month)) # For test purposes
 
@@ -123,7 +123,7 @@ def time_stats(df):
     start_time = time.time()
 
 
-    print('The most common month is: ', list(df['month'].mode()))    
+    print('The most common month is: ', list(df['month'].mode()))
 
     print('The most common day of the week is: ', list(df['day of week'].mode()))
 
@@ -153,14 +153,14 @@ def trip_duration_stats(df):
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
-    
+
     # Sums total trip duration and then creates days, hours, minutes and seconds variables
     totaltravel = int(df['Trip Duration'].sum())
     tdays = totaltravel // 86400
     thours = (totaltravel - (tdays * 86400)) // 3600
     tminutes = (totaltravel - (tdays * 86400) - (thours * 3600)) // 60
-    tseconds = (totaltravel - (tdays * 86400) - (thours * 3600)) % 60          
-          
+    tseconds = (totaltravel - (tdays * 86400) - (thours * 3600)) % 60
+
     print('The total travel time for this time range is {} days, {} hours, {} minutes and {} seconds.'.\
           format(tdays, thours, tminutes, tseconds))
     print('The average travel time is {} seconds'.format(int(df['Trip Duration'].mean())))
@@ -176,12 +176,12 @@ def user_stats(df):
     start_time = time.time()
 
     print(df['User Type'].value_counts(), '\n')
-    
-    # ensures data set has the gender column or skips   
+
+    # ensures data set has the gender column or skips
     if 'Gender' in df.columns:
-    
+
         print(df['Gender'].value_counts())
-    else: 
+    else:
         print('Unable to calculate gender counts, this city does not collect that information.')
 
     # ensures data set has birth year or skips
@@ -196,13 +196,13 @@ def user_stats(df):
 
 def display_data(df):
     """Offers to display the raw data 5 lines at a time """
-    
+
     rawdata = 'yes'
     lcount = 0
     llimit = len(df)
     print('\nThere are {} rows in this data frame.'.format(llimit))
-        
-    
+
+
     # Loop to keep querying if more data needs to be displayed
     while rawdata == 'yes':
         rawdata = input('\nWould you like to see 5 lines of the raw data? Enter yes or no.\n')
@@ -212,19 +212,20 @@ def display_data(df):
         if (lcount + 5) < llimit:
             print(df.iloc[lcount:(lcount + 5)])
             lcount = lcount + 5
-        elif (lcount + 5) == llimit: 
+        elif (lcount + 5) == llimit:
             print(df.iloc[lcount:(lcount + 5)])
             break
-        else:    
+        else:
             print(df.iloc[lcount:llimit])
             break
 
 def main():
     while True:
         city, month, day = get_filters()
+        # Displays filter choices inputted by user
         print('You chose {}, {}, {}'.format(city, month, day))
         df = load_data(city, month, day)
-        
+
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)

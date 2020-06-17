@@ -1,15 +1,19 @@
-### Date created
-Include the date you created this project and README file.
+### June 9, 2020
 
-### Project Title
-Replace the Project Title
+### Udacity Bikeshare Project
 
 ### Description
-Describe what your project is about and what it does
+This Python program takes user input to filter and perform calculations on data from csv files for three cities, Washington, New York City and Chicago.
 
 ### Files used
-Include the files used
+This project was built around the bikeshare.py framework provided by Udacity
+for their Programming with Python for Data Science Nano Degree.
+
+* Python 3.6.3
+* Conda 4.6.9
+* numpy
+* pandas
+* time
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Special thanks to the Udacity team for the course they put together as well as the project reviewer for his hints on the hint on how to display five lines of code at a time using df.iloc().

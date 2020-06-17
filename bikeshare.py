@@ -213,6 +213,7 @@ def display_data(df):
 def main():
     while True:
         city, month, day = get_filters()
+        # Displays filter choices inputted by user
         print('You chose {}, {}, {}'.format(city, month, day))
         df = load_data(city, month, day)
 
